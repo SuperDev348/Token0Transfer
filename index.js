@@ -59,7 +59,14 @@ async function transferMethod() {
 
   // Send the signed transaction to the network
   const result = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
-  console.log("Transaction result: ", result);
+  return result;
+  
 }
 
-transferMethod();
+transferMethod()
+.then(function(result) {
+  console.log("Transaction result: ", result);
+})
+.catch(function(error) {
+  console.log(error)
+});
